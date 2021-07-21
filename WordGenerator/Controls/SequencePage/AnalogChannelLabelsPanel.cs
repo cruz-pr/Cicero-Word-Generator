@@ -40,9 +40,9 @@ namespace WordGenerator.Controls
             else
                 channelLabels = new List<Label>();
 
-            this.ResumeLayout(true);
+            //this.ResumeLayout(true);
 
-            this.SuspendLayout();
+            //this.SuspendLayout();
 
             List<int> analogIDs = new List<int>(Storage.settingsData.logicalChannelManager.ChannelCollections[DataStructures.HardwareChannel.HardwareConstants.ChannelTypes.analog].Channels.Keys);
             analogIDs.Sort();

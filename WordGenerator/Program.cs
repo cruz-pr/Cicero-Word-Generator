@@ -23,8 +23,6 @@ namespace WordGenerator
         [STAThread]
         public static void Main()
         {
-
-
             runCicero();
         }
 
