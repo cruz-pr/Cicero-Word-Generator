@@ -622,19 +622,6 @@ namespace WordGenerator.Controls
             }
 
             this.variablesPanel.ResumeLayout();
-
-            /*
-            foreach (VariableEditor ved in variableEditors)
-            {
-                if ( !ved.varName.ToLower().Contains(toSearch.ToLower()) )
-                {
-                    ved.Hide();
-                }
-                else if ( ved.varName.ToLower().Contains(toSearch.ToLower()) )
-                {
-                    ved.Show();
-                }
-            }*/
             
             prevSearch = toSearch; // to keep track of
         }
