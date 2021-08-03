@@ -11,9 +11,13 @@ namespace WordGenerator.Controls
 {
     public partial class VariablesAndListPage : UserControl
     {
+        // ~ * ~ *
+        private List<VariableEditor> variableEditors;        
+        //private Dictionary<VariableEditor, int> variableEditorsDict;
+        // ~ * ~ *
 
-        private List<VariableEditor> variableEditors;
         private List<ListEditorPanel> listPanels;
+        string prevSearch = "";
 
         public VariablesAndListPage()
         {
@@ -25,9 +29,14 @@ namespace WordGenerator.Controls
             this.runControl1.RunNoSave.Visible = false;
             this.runControl1.runRandomList.Visible = false;
             this.runControl1.continueListButton.Visible = false;
-            
+
+            // ~ * ~ *
             variableEditors = new List<VariableEditor>();
+            //variableEditorsDict = new Dictionary<VariableEditor, int>();
+            // ~ * ~ *
+
             listPanels = new List<ListEditorPanel>();
+
             for (int i = 0; i < ListData.NLists; i++)
             {
                 ListEditorPanel lep = new ListEditorPanel();
@@ -135,7 +144,7 @@ namespace WordGenerator.Controls
                     int extras = shownVariables - variableEditors.Count;
                     for (int i = 0; i < extras; i++)
                     {
-                        variablesPanel.Controls.Add(createAndRegisterNewVariableEditor(null));
+                        variablesPanel.Controls.Add(createAndRegisterNewVariableEditor(null, 0));
                     }
                 }
                 // if less than we currently have, remove some
@@ -157,7 +166,7 @@ namespace WordGenerator.Controls
                 {
                     if (!var.IsSpecialVariable)
                     {
-                        variableEditors[j].setVariable(var);
+                        variableEditors[j].setVariable(var,j);
                         j++;
                     }
                 }
@@ -174,21 +183,31 @@ namespace WordGenerator.Controls
         /// </summary>
         private void discardAndRefreshAllVariableEditors()
         {
+            
             foreach (VariableEditor ved in variableEditors)
             {
                 this.variablesPanel.Controls.Remove(ved);
                 ved.Dispose();
             }
+            /*
+            foreach (VariableEditor ved in variableEditorsDict.Keys)
+            {
+                this.variablesPanel.Controls.Remove(ved);
+                ved.Dispose();
+            }*/
 
             variableEditors.Clear();
+            //variableEditorsDict.Clear();
 
             if (Storage.sequenceData != null && Storage.sequenceData.Variables != null)
             {
+                int id = 1;
                 foreach (Variable var in Storage.sequenceData.Variables)
                 {
                     if (!var.IsSpecialVariable)
                     {
-                        createAndRegisterNewVariableEditor(var);
+                        createAndRegisterNewVariableEditor(var, id);
+                        id += 1;
                     }
                 }
 
@@ -197,17 +216,23 @@ namespace WordGenerator.Controls
             }
         }
 
-        private VariableEditor createAndRegisterNewVariableEditor(Variable var)
+        private VariableEditor createAndRegisterNewVariableEditor(Variable var, int id)
         {
             VariableEditor ved = new VariableEditor();
-            ved.setVariable(var);
-            /*        int x = variableEditorPlaceholder.Location.X;
+            ved.setVariable(var, id);
+
+            
+                    /* int x = variableEditorPlaceholder.Location.X;
                     int y = variableEditorPlaceholder.Location.Y + variableEditors.Count * (variableEditorPlaceholder.Height + 5);
-                    ved.Location = new Point(x, y);*/
+                    ved.Location = new Point(x, y); */
+
+            
             ved.variableDeleted += new EventHandler(ved_variableDeleted);
-            //      ved.SizeChanged += new EventHandler(ved_SizeChanged);
+                    // ved.SizeChanged += new EventHandler(ved_SizeChanged);
             ved.valueChanged += new EventHandler(ved_valueChanged);
+            
             variableEditors.Add(ved);
+
             return ved;
         }
 
@@ -553,7 +578,50 @@ namespace WordGenerator.Controls
 
         }
 
+        private void nameLabel_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void listEditorPanelPlaceholder_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchVarBox_TextChanged(object sender, EventArgs e)
+        {
+            string toSearch = searchVarBox.Text;
+            searchVariableEditors(toSearch);
+            //MessageBox.Show(toSearch);
+        }
+
+        private void searchVariableEditors(string toSearch)
+        {
+
+            foreach (VariableEditor ved in variableEditors)
+            {
+                if (!ved.varName.Contains(toSearch))
+                {
+                    ved.Hide();
+                } else
+                {
+                    ved.Show();
+                }
+            }
+            
+            /*
+            foreach (VariableEditor ved in variableEditors)
+            {
+                if (ved.varName == toSearch)
+                {
+                    ved.Hide();
+                } else
+                {
+                    ved.Show();
+                }
+            }
+            prevSearch = toSearch; // to keep track of
+            */
+        }
     }
 }

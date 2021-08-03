@@ -13,6 +13,10 @@ namespace WordGenerator.Controls
     public partial class VariableEditor : UserControl
     {
         private Variable variable;
+        
+        public string varName;
+
+        public int vedID;
 
         private bool listLocked;
 
@@ -56,6 +60,7 @@ namespace WordGenerator.Controls
             {
                 this.listSelector.Items.Add("Database " + (i + 1));
             }
+            
             if (Storage.settingsData.LookupTables != null)
             {
                 foreach (LUT table in Storage.settingsData.LookupTables)
@@ -70,7 +75,7 @@ namespace WordGenerator.Controls
 
         }
 
-        public void setVariable(Variable var)
+        public void setVariable(Variable var, int id)
         {
             if (this.variable == var)
                 return; // if the variable is already set appropriately,
@@ -100,7 +105,9 @@ namespace WordGenerator.Controls
             }
 
             this.textBox1.Text = variable.VariableName;
-
+            this.vedIDbox.Text = id.ToString();
+            this.vedID = id;
+            this.varName = variable.VariableName;
             this.derivedCheckBox.Checked = var.DerivedVariable;
             this.formulaTextBox.Text = var.VariableFormula;
 
@@ -434,33 +441,38 @@ namespace WordGenerator.Controls
 
         }
 
-    /*    private void downButton_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            if (variable != null)
-            {
-                if (variable.DerivedVariable)
-                {
-                    variable.Combiners.Add(Variable.plus);
-                    variable.CombinedValues.Add(new DimensionedParameter(Units.Dimension.unity));
-                    updateLayout();
-                }
-            }
+
         }
 
-        private void upButton_Click(object sender, EventArgs e)
-        {
-            if (variable != null)
+        /*    private void downButton_Click(object sender, EventArgs e)
             {
-                if (variable.DerivedVariable)
+                if (variable != null)
                 {
-                    if (variable.CombinedValues.Count > 1)
+                    if (variable.DerivedVariable)
                     {
-                        variable.CombinedValues.RemoveAt(variable.CombinedValues.Count - 1);
-                        variable.Combiners.RemoveAt(variable.Combiners.Count - 1);
+                        variable.Combiners.Add(Variable.plus);
+                        variable.CombinedValues.Add(new DimensionedParameter(Units.Dimension.unity));
                         updateLayout();
                     }
                 }
             }
-        }*/
+
+            private void upButton_Click(object sender, EventArgs e)
+            {
+                if (variable != null)
+                {
+                    if (variable.DerivedVariable)
+                    {
+                        if (variable.CombinedValues.Count > 1)
+                        {
+                            variable.CombinedValues.RemoveAt(variable.CombinedValues.Count - 1);
+                            variable.Combiners.RemoveAt(variable.Combiners.Count - 1);
+                            updateLayout();
+                        }
+                    }
+                }
+            }*/
     }
 }
