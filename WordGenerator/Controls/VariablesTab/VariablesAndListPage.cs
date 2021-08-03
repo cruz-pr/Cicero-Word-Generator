@@ -12,7 +12,7 @@ namespace WordGenerator.Controls
     public partial class VariablesAndListPage : UserControl
     {
         // ~ * ~ *
-        private List<VariableEditor> variableEditors;        
+        private List<VariableEditor> variableEditors;
         //private Dictionary<VariableEditor, int> variableEditorsDict;
         // ~ * ~ *
 
@@ -230,7 +230,7 @@ namespace WordGenerator.Controls
             ved.variableDeleted += new EventHandler(ved_variableDeleted);
                     // ved.SizeChanged += new EventHandler(ved_SizeChanged);
             ved.valueChanged += new EventHandler(ved_valueChanged);
-            
+
             variableEditors.Add(ved);
 
             return ved;
@@ -598,30 +598,45 @@ namespace WordGenerator.Controls
         private void searchVariableEditors(string toSearch)
         {
 
-            foreach (VariableEditor ved in variableEditors)
-            {
-                if (!ved.varName.Contains(toSearch))
+            this.variablesPanel.SuspendLayout();
+
+            if (toSearch.Length > prevSearch.Length)
+            { // new search contains new chars, so filter out
+                foreach (VariableEditor ved in variableEditors)
                 {
-                    ved.Hide();
-                } else
-                {
-                    ved.Show();
+                    if (!ved.varName.ToLower().Contains(toSearch.ToLower()) && ved.Visible)
+                    {
+                        ved.Hide();
+                    }
                 }
             }
-            
+            else if (toSearch.Length <= prevSearch.Length || toSearch == "")
+            { // new search is shorter so have to add again the ones that contain
+                foreach (VariableEditor ved in variableEditors)
+                {
+                    if (ved.varName.ToLower().Contains(toSearch.ToLower()) && !ved.Visible)
+                    {
+                        ved.Show();
+                    }
+                }
+            }
+
+            this.variablesPanel.ResumeLayout();
+
             /*
             foreach (VariableEditor ved in variableEditors)
             {
-                if (ved.varName == toSearch)
+                if ( !ved.varName.ToLower().Contains(toSearch.ToLower()) )
                 {
                     ved.Hide();
-                } else
+                }
+                else if ( ved.varName.ToLower().Contains(toSearch.ToLower()) )
                 {
                     ved.Show();
                 }
-            }
+            }*/
+            
             prevSearch = toSearch; // to keep track of
-            */
         }
     }
 }
