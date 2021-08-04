@@ -43,6 +43,10 @@
     <Reference Include="DataStructures">
       <HintPath>..\datastructures\bin\Debug\DataStructures.dll</HintPath>
     </Reference>
+    <Reference Include="dotMath, Version=1.0.6022.28373, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dotmath\bin\Debug\dotMath.dll</HintPath>
+    </Reference>
     <Reference Include="libFrontPanel-csharp">
       <HintPath>..\Opal Kelly\Opal Kelly 4.0.8\API-32\Csharp\libFrontPanel-csharp.dll</HintPath>
     </Reference>
@@ -71,8 +75,9 @@
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WordGenerator">
-      <HintPath>..\WordGenerator\bin\Debug\WordGenerator.exe</HintPath>
+    <Reference Include="WordGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WordGenerator\bin\Release\WordGenerator.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -90,12 +95,6 @@
     <Compile Include="SharedTestFunctions.cs" />
     <Compile Include="Storage_SaveAndLoadTest.cs" />
     <Compile Include="VariableTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\dotmath\dotMath.csproj">
-      <Project>{B2EBEDE8-441A-4CC2-80FF-5F290D528919}</Project>
-      <Name>dotMath</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Shadow Include="Test References\WordGenerator.accessor" />

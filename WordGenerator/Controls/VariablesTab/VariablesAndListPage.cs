@@ -11,13 +11,9 @@ namespace WordGenerator.Controls
 {
     public partial class VariablesAndListPage : UserControl
     {
-        // ~ * ~ *
-        private List<VariableEditor> variableEditors;
-        //private Dictionary<VariableEditor, int> variableEditorsDict;
-        // ~ * ~ *
 
+        private List<VariableEditor> variableEditors;
         private List<ListEditorPanel> listPanels;
-        string prevSearch = "";
 
         public VariablesAndListPage()
         {
@@ -29,14 +25,9 @@ namespace WordGenerator.Controls
             this.runControl1.RunNoSave.Visible = false;
             this.runControl1.runRandomList.Visible = false;
             this.runControl1.continueListButton.Visible = false;
-
-            // ~ * ~ *
+            
             variableEditors = new List<VariableEditor>();
-            //variableEditorsDict = new Dictionary<VariableEditor, int>();
-            // ~ * ~ *
-
             listPanels = new List<ListEditorPanel>();
-
             for (int i = 0; i < ListData.NLists; i++)
             {
                 ListEditorPanel lep = new ListEditorPanel();
@@ -144,7 +135,7 @@ namespace WordGenerator.Controls
                     int extras = shownVariables - variableEditors.Count;
                     for (int i = 0; i < extras; i++)
                     {
-                        variablesPanel.Controls.Add(createAndRegisterNewVariableEditor(null, 0));
+                        variablesPanel.Controls.Add(createAndRegisterNewVariableEditor(null));
                     }
                 }
                 // if less than we currently have, remove some
@@ -166,7 +157,7 @@ namespace WordGenerator.Controls
                 {
                     if (!var.IsSpecialVariable)
                     {
-                        variableEditors[j].setVariable(var,j);
+                        variableEditors[j].setVariable(var);
                         j++;
                     }
                 }
@@ -181,33 +172,23 @@ namespace WordGenerator.Controls
         /// <summary>
         /// Somewhat slow but guaranteed to work layout of variable editors.
         /// </summary>
-        private void discardAndRefreshAllVariableEditors()
+        public void discardAndRefreshAllVariableEditors()
         {
-            
             foreach (VariableEditor ved in variableEditors)
             {
                 this.variablesPanel.Controls.Remove(ved);
                 ved.Dispose();
             }
-            /*
-            foreach (VariableEditor ved in variableEditorsDict.Keys)
-            {
-                this.variablesPanel.Controls.Remove(ved);
-                ved.Dispose();
-            }*/
 
             variableEditors.Clear();
-            //variableEditorsDict.Clear();
 
             if (Storage.sequenceData != null && Storage.sequenceData.Variables != null)
             {
-                int id = 1;
                 foreach (Variable var in Storage.sequenceData.Variables)
                 {
                     if (!var.IsSpecialVariable)
                     {
-                        createAndRegisterNewVariableEditor(var, id);
-                        id += 1;
+                        createAndRegisterNewVariableEditor(var);
                     }
                 }
 
@@ -216,23 +197,17 @@ namespace WordGenerator.Controls
             }
         }
 
-        private VariableEditor createAndRegisterNewVariableEditor(Variable var, int id)
+        private VariableEditor createAndRegisterNewVariableEditor(Variable var)
         {
             VariableEditor ved = new VariableEditor();
-            ved.setVariable(var, id);
-
-            
-                    /* int x = variableEditorPlaceholder.Location.X;
+            ved.setVariable(var);
+            /*        int x = variableEditorPlaceholder.Location.X;
                     int y = variableEditorPlaceholder.Location.Y + variableEditors.Count * (variableEditorPlaceholder.Height + 5);
-                    ved.Location = new Point(x, y); */
-
-            
+                    ved.Location = new Point(x, y);*/
             ved.variableDeleted += new EventHandler(ved_variableDeleted);
-                    // ved.SizeChanged += new EventHandler(ved_SizeChanged);
+            //      ved.SizeChanged += new EventHandler(ved_SizeChanged);
             ved.valueChanged += new EventHandler(ved_valueChanged);
-
             variableEditors.Add(ved);
-
             return ved;
         }
 
@@ -549,12 +524,24 @@ namespace WordGenerator.Controls
             List<Double> fillers = new List<double>();
             try
             {
+                DialogResult dialogResult = new DialogResult();
                 int numOfFillers = (int)(1 + (this.listFillerStop.Value - this.listFillerStart.Value) / this.listFillerStep.Value);
-                for (int i = 0; i < numOfFillers; i++)
+                if (numOfFillers > 500)
                 {
-                    fillers.Add((double)(this.listFillerStart.Value + i * this.listFillerStep.Value));
+                    dialogResult = MessageBox.Show("More than 500 list items are about to be added - are you sure?", "Warning", MessageBoxButtons.YesNo);
                 }
-                listPanels[listFillerSelector.SelectedIndex].setData(fillers);
+                if (dialogResult == DialogResult.No)
+                {
+                    //do nothing
+                }
+                else
+                {
+                    for (int i = 0; i < numOfFillers; i++)
+                    {
+                        fillers.Add((double)(this.listFillerStart.Value + i * this.listFillerStep.Value));
+                    }
+                    listPanels[listFillerSelector.SelectedIndex].setData(fillers);
+                }
             }
             catch
             {
@@ -578,52 +565,7 @@ namespace WordGenerator.Controls
 
         }
 
-        private void nameLabel_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void listEditorPanelPlaceholder_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchVarBox_TextChanged(object sender, EventArgs e)
-        {
-            string toSearch = searchVarBox.Text;
-            searchVariableEditors(toSearch);
-            //MessageBox.Show(toSearch);
-        }
-
-        private void searchVariableEditors(string toSearch)
-        {
-
-            this.variablesPanel.SuspendLayout();
-
-            if (toSearch.Length > prevSearch.Length)
-            { // new search contains new chars, so filter out
-                foreach (VariableEditor ved in variableEditors)
-                {
-                    if (!ved.varName.ToLower().Contains(toSearch.ToLower()) && ved.Visible)
-                    {
-                        ved.Hide();
-                    }
-                }
-            }
-            else if (toSearch.Length <= prevSearch.Length || toSearch == "")
-            { // new search is shorter so have to add again the ones that contain
-                foreach (VariableEditor ved in variableEditors)
-                {
-                    if (ved.varName.ToLower().Contains(toSearch.ToLower()) && !ved.Visible)
-                    {
-                        ved.Show();
-                    }
-                }
-            }
-
-            this.variablesPanel.ResumeLayout();
-            
-            prevSearch = toSearch; // to keep track of
-        }
     }
 }

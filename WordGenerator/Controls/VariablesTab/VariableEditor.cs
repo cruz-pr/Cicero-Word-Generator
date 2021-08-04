@@ -13,10 +13,6 @@ namespace WordGenerator.Controls
     public partial class VariableEditor : UserControl
     {
         private Variable variable;
-        
-        public string varName;
-
-        public int vedID;
 
         private bool listLocked;
 
@@ -60,7 +56,6 @@ namespace WordGenerator.Controls
             {
                 this.listSelector.Items.Add("Database " + (i + 1));
             }
-            
             if (Storage.settingsData.LookupTables != null)
             {
                 foreach (LUT table in Storage.settingsData.LookupTables)
@@ -75,7 +70,7 @@ namespace WordGenerator.Controls
 
         }
 
-        public void setVariable(Variable var, int id)
+        public void setVariable(Variable var)
         {
             if (this.variable == var)
                 return; // if the variable is already set appropriately,
@@ -94,7 +89,7 @@ namespace WordGenerator.Controls
             else if (this.variable.LUTDriven)
             {
                 this.listSelector.Visible = true;
-                this.listSelector.SelectedIndex = (30 + this.variable.LUTNumber);
+                this.listSelector.SelectedIndex = (31 + this.variable.LUTNumber);
             }
             else
                 this.listSelector.Visible = false;
@@ -105,9 +100,7 @@ namespace WordGenerator.Controls
             }
 
             this.textBox1.Text = variable.VariableName;
-            this.vedIDbox.Text = id.ToString();
-            this.vedID = id;
-            this.varName = variable.VariableName;
+
             this.derivedCheckBox.Checked = var.DerivedVariable;
             this.formulaTextBox.Text = var.VariableFormula;
 
@@ -194,7 +187,7 @@ namespace WordGenerator.Controls
                 variable.DBDriven = true;
                 variable.DBFieldNumber = (listSelector.SelectedIndex - 10);
             }
-            else //LUT Options 
+            /* else //LUT Options //Moved to different event handler
             {
                 this.backupValue = valueSelector.Value;
                 variable.ListDriven = false;
@@ -207,7 +200,7 @@ namespace WordGenerator.Controls
                 vs1.ShowDialog();
                 toolTip1.SetToolTip(this.listSelector, "Value Calculated Based On "+variable.LUTInput.VariableName);
             }
- 
+            */
             if (valueChanged != null)
                 valueChanged(this, null);
         }
@@ -441,9 +434,26 @@ namespace WordGenerator.Controls
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void VariableEditor_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void listSelector_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (listSelector.SelectedIndex > 30)
+            {
+                this.backupValue = valueSelector.Value;
+                variable.ListDriven = false;
+                variable.LUTDriven = true;
+                variable.LUTNumber = (listSelector.SelectedIndex - 31);
+
+                variable.LUTInput = Storage.sequenceData.Variables[0];
+                //Show the independent var selection form
+                varSelector vs1 = new varSelector(variable);
+                vs1.ShowDialog();
+                toolTip1.SetToolTip(this.listSelector, "Value Calculated Based On " + variable.LUTInput.VariableName);
+            }
         }
 
         /*    private void downButton_Click(object sender, EventArgs e)
