@@ -40,15 +40,16 @@ namespace WordGenerator.Controls
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.helpOnSupportedOperationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permanentValueLabel = new System.Windows.Forms.Label();
+            this.vedIDbox = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.valueSelector)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 1);
+            this.textBox1.Location = new System.Drawing.Point(47, 1);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
+            this.textBox1.Size = new System.Drawing.Size(54, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -153,10 +154,20 @@ namespace WordGenerator.Controls
             this.permanentValueLabel.Visible = false;
             this.permanentValueLabel.Click += new System.EventHandler(this.permanentValueLabel_Click);
             // 
+            // vedIDbox
+            // 
+            this.vedIDbox.AutoSize = true;
+            this.vedIDbox.Location = new System.Drawing.Point(26, 5);
+            this.vedIDbox.Name = "vedIDbox";
+            this.vedIDbox.Size = new System.Drawing.Size(36, 13);
+            this.vedIDbox.TabIndex = 10;
+            this.vedIDbox.Text = "vedID";
+            // 
             // VariableEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.vedIDbox);
             this.Controls.Add(this.permanentValueLabel);
             this.Controls.Add(this.formulaTextBox);
             this.Controls.Add(this.derivedValueLabel);
@@ -189,5 +200,6 @@ namespace WordGenerator.Controls
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpOnSupportedOperationsToolStripMenuItem;
         private System.Windows.Forms.Label permanentValueLabel;
+        private System.Windows.Forms.Label vedIDbox;
     }
 }

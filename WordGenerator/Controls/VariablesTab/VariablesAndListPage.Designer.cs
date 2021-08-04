@@ -61,6 +61,7 @@ namespace WordGenerator.Controls
             this.listFillerButton = new System.Windows.Forms.Button();
             this.listFillerSelector = new System.Windows.Forms.ComboBox();
             this.LockMessage = new System.Windows.Forms.Label();
+            this.searchVarBox = new System.Windows.Forms.TextBox();
             this.listEditorPanelPlaceholder = new WordGenerator.Controls.ListEditorPanel();
             this.runControl1 = new WordGenerator.Controls.RunControl();
             this.variablesPanel.SuspendLayout();
@@ -91,7 +92,7 @@ namespace WordGenerator.Controls
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.71028F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.28972F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.nameLabel, 1, 0);
@@ -106,7 +107,7 @@ namespace WordGenerator.Controls
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 0);
+            this.label1.Location = new System.Drawing.Point(58, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 1;
@@ -126,19 +127,19 @@ namespace WordGenerator.Controls
             this.nameLabel.AutoSize = true;
             this.nameLabel.Location = new System.Drawing.Point(21, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(35, 13);
+            this.nameLabel.Size = new System.Drawing.Size(29, 19);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(115, 0);
+            this.label3.Location = new System.Drawing.Point(111, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Equation?";
-            //
+            // 
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(24, 74);
@@ -444,6 +445,16 @@ namespace WordGenerator.Controls
             this.LockMessage.Size = new System.Drawing.Size(0, 13);
             this.LockMessage.TabIndex = 11;
             // 
+            // searchVarBox
+            // 
+            this.searchVarBox.AcceptsReturn = true;
+            this.searchVarBox.AcceptsTab = true;
+            this.searchVarBox.Location = new System.Drawing.Point(55, 37);
+            this.searchVarBox.Name = "searchVarBox";
+            this.searchVarBox.Size = new System.Drawing.Size(100, 20);
+            this.searchVarBox.TabIndex = 12;
+            this.searchVarBox.TextChanged += new System.EventHandler(this.searchVarBox_TextChanged_1);
+            // 
             // listEditorPanelPlaceholder
             // 
             this.listEditorPanelPlaceholder.Location = new System.Drawing.Point(326, 3);
@@ -464,6 +475,7 @@ namespace WordGenerator.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.searchVarBox);
             this.Controls.Add(this.LockMessage);
             this.Controls.Add(this.listFiller);
             this.Controls.Add(this.permanentVariablesButton);
@@ -532,5 +544,6 @@ namespace WordGenerator.Controls
         private System.Windows.Forms.Label LockMessage;
         private RunControl runControl1;
         private System.Windows.Forms.Button loadCalSequenceFromCurrentSequence;
+        private System.Windows.Forms.TextBox searchVarBox;
     }
 }

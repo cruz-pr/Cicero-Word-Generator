@@ -13,6 +13,12 @@ namespace WordGenerator.Controls
     public partial class VariableEditor : UserControl
     {
         private Variable variable;
+        public string VarName
+        {
+            get { return variable.VariableName; }
+        }
+
+        private int vedID;
 
         private bool listLocked;
 
@@ -70,7 +76,7 @@ namespace WordGenerator.Controls
 
         }
 
-        public void setVariable(Variable var)
+        public void setVariable(Variable var, int id)
         {
             if (this.variable == var)
                 return; // if the variable is already set appropriately,
@@ -100,7 +106,8 @@ namespace WordGenerator.Controls
             }
 
             this.textBox1.Text = variable.VariableName;
-
+            this.vedID = id;
+            this.vedIDbox.Text = this.vedID.ToString();
             this.derivedCheckBox.Checked = var.DerivedVariable;
             this.formulaTextBox.Text = var.VariableFormula;
 
