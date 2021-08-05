@@ -14,7 +14,7 @@ namespace WordGenerator.Controls
 
         private bool created = false;
 
-        private bool hideHiddenTimesteps = false;
+        private bool hideHiddenTimesteps = true;
 
         private bool horizontalScrollingEventsCalled = false;
         private bool verticalScrollingEventsCalled = false;
@@ -435,9 +435,11 @@ namespace WordGenerator.Controls
         {
             if (analogPreviewAutoUpdate.Checked)
             {
+                // I'm sure it makes a difference which one goes before but rn I can't tell 
+                
                 analogPreviewPane.redrawBuffer();
                 analogPreviewPane.Invalidate();
-
+                //analogPreviewPane.redrawBuffer();
 
                 //WordGenerator.mainClientForm.instance.analogGroupEditor1.updateRunOrderPanel();
             }

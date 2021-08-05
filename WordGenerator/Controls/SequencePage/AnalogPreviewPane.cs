@@ -129,9 +129,10 @@ namespace WordGenerator.Controls
         public int colWidth;
         public int rowHeight;
 
-        protected override void OnPaint(PaintEventArgs e)
+        //protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaintBackground(PaintEventArgs e)
         {
-            
+
             if (enabled)
             {
                 if (buffer != null)
@@ -139,7 +140,10 @@ namespace WordGenerator.Controls
 
                     Rectangle sourceRectangle = new Rectangle(e.ClipRectangle.X + HorizontalScroll.Value, e.ClipRectangle.Y + VerticalScroll.Value, e.ClipRectangle.Width, e.ClipRectangle.Height);
 
+                    //e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                    e.Graphics.CompositingMode = CompositingMode.SourceCopy;
                     e.Graphics.DrawImage(buffer, e.ClipRectangle, sourceRectangle, GraphicsUnit.Pixel);
+                    e.Graphics.CompositingMode = CompositingMode.SourceOver;
 
                     if (drawCursor)
                     {
@@ -158,7 +162,8 @@ namespace WordGenerator.Controls
 
         public void redrawBuffer()
         {
-           if (WordGenerator.MainClientForm.instance != null)
+
+            if (WordGenerator.MainClientForm.instance != null)
                     WordGenerator.MainClientForm.instance.cursorWait();
            try
            {

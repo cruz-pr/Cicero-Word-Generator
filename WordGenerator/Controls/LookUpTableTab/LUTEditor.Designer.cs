@@ -44,6 +44,10 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.varUpdate = new System.Windows.Forms.Button();
+<<<<<<< HEAD
+            this.LUTSelectorListBox = new System.Windows.Forms.ListBox();
+=======
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             ((System.ComponentModel.ISupportInitialize)(this.tableDisplay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,10 +184,33 @@
             this.varUpdate.UseVisualStyleBackColor = true;
             this.varUpdate.Click += new System.EventHandler(this.varUpdate_Click);
             // 
+            // varUpdate
+            // 
+            this.varUpdate.Location = new System.Drawing.Point(610, 183);
+            this.varUpdate.Name = "varUpdate";
+            this.varUpdate.Size = new System.Drawing.Size(145, 70);
+            this.varUpdate.TabIndex = 12;
+            this.varUpdate.Text = "Update Variables";
+            this.varUpdate.UseVisualStyleBackColor = true;
+            this.varUpdate.Click += new System.EventHandler(this.varUpdate_Click);
+            // 
+            // LUTSelectorListBox
+            // 
+            this.LUTSelectorListBox.FormattingEnabled = true;
+            this.LUTSelectorListBox.Location = new System.Drawing.Point(17, 166);
+            this.LUTSelectorListBox.Name = "LUTSelectorListBox";
+            this.LUTSelectorListBox.Size = new System.Drawing.Size(145, 433);
+            this.LUTSelectorListBox.TabIndex = 13;
+            this.LUTSelectorListBox.SelectedIndexChanged += new System.EventHandler(this.LUTSelectorListBox_SelectedIndexChanged);
+            // 
             // LookupTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
+            this.Controls.Add(this.LUTSelectorListBox);
+=======
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.Controls.Add(this.varUpdate);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.label3);
@@ -218,6 +245,10 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button varUpdate;
+<<<<<<< HEAD
+        private System.Windows.Forms.ListBox LUTSelectorListBox;
+=======
 
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
     }
 }

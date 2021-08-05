@@ -14,7 +14,7 @@ namespace WordGenerator.Controls
 
         private List<VariableEditor> variableEditors;
         private List<ListEditorPanel> listPanels;
-
+        private string prevSearch = "";
         public VariablesAndListPage()
         {
             InitializeComponent();
@@ -135,7 +135,7 @@ namespace WordGenerator.Controls
                     int extras = shownVariables - variableEditors.Count;
                     for (int i = 0; i < extras; i++)
                     {
-                        variablesPanel.Controls.Add(createAndRegisterNewVariableEditor(null));
+                        variablesPanel.Controls.Add(createAndRegisterNewVariableEditor(null,0));
                     }
                 }
                 // if less than we currently have, remove some
@@ -157,7 +157,7 @@ namespace WordGenerator.Controls
                 {
                     if (!var.IsSpecialVariable)
                     {
-                        variableEditors[j].setVariable(var);
+                        variableEditors[j].setVariable(var, j);
                         j++;
                     }
                 }
@@ -184,11 +184,13 @@ namespace WordGenerator.Controls
 
             if (Storage.sequenceData != null && Storage.sequenceData.Variables != null)
             {
+                int id = 1;
                 foreach (Variable var in Storage.sequenceData.Variables)
                 {
                     if (!var.IsSpecialVariable)
                     {
-                        createAndRegisterNewVariableEditor(var);
+                        createAndRegisterNewVariableEditor(var,id);
+                        id += 1;
                     }
                 }
 
@@ -197,10 +199,10 @@ namespace WordGenerator.Controls
             }
         }
 
-        private VariableEditor createAndRegisterNewVariableEditor(Variable var)
+        private VariableEditor createAndRegisterNewVariableEditor(Variable var, int id)
         {
             VariableEditor ved = new VariableEditor();
-            ved.setVariable(var);
+            ved.setVariable(var, id);
             /*        int x = variableEditorPlaceholder.Location.X;
                     int y = variableEditorPlaceholder.Location.Y + variableEditors.Count * (variableEditorPlaceholder.Height + 5);
                     ved.Location = new Point(x, y);*/
@@ -527,11 +529,19 @@ namespace WordGenerator.Controls
                 DialogResult dialogResult = new DialogResult();
                 int numOfFillers = (int)(1 + (this.listFillerStop.Value - this.listFillerStart.Value) / this.listFillerStep.Value);
                 if (numOfFillers > 500)
+<<<<<<< HEAD
                 {
                     dialogResult = MessageBox.Show("More than 500 list items are about to be added - are you sure?", "Warning", MessageBoxButtons.YesNo);
                 }
                 if (dialogResult == DialogResult.No)
                 {
+=======
+                {
+                    dialogResult = MessageBox.Show("More than 500 list items are about to be added - are you sure?", "Warning", MessageBoxButtons.YesNo);
+                }
+                if (dialogResult == DialogResult.No)
+                {
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
                     //do nothing
                 }
                 else
@@ -566,6 +576,57 @@ namespace WordGenerator.Controls
         }
 
 
+        private void searchVariableEditors(string toSearch)
+        {
+            toSearch = toSearch.ToLower();
+
+            this.variablesPanel.SuspendLayout();
+
+            if (toSearch != prevSearch)
+            {
+                foreach (VariableEditor ved in variableEditors)
+                {
+
+                    string varName = ved.VarName.ToLower();
+                    string varFormula = ved.VarFormula.ToLower();
+                    string inputLUTVarName = ved.LUTInputVarName.ToLower();
+                    bool varContainsToSearchInNameOrFormulaOrLUTInVarName = varName.Contains(toSearch) || varFormula.Contains(toSearch) || inputLUTVarName.Contains(toSearch);
+
+                    if (!varContainsToSearchInNameOrFormulaOrLUTInVarName && ved.Visible)
+                    {
+                        ved.Hide();
+                    }
+                    else if (varContainsToSearchInNameOrFormulaOrLUTInVarName && !ved.Visible)
+                    {
+                        ved.Show();
+                    }
+                }
+            }
+
+            this.variablesPanel.ResumeLayout();
+
+            prevSearch = toSearch; // to keep track of
+        }
+
+        private void searchVarBox_TextChanged_1(object sender, EventArgs e)
+        {
+            string toSearch = searchVarBox.Text;
+            searchVariableEditors(toSearch);
+            //MessageBox.Show(toSearch);
+        }
+
+        private void clearVarSearchButton_Click(object sender, EventArgs e)
+        {
+            searchVarBox.Text = "";
+            clearVarSearch();
+        }
+
+        private void clearVarSearch()
+        {
+            searchVariableEditors("");
+            //throw new NotImplementedException();
+        }
+        
 
     }
 }

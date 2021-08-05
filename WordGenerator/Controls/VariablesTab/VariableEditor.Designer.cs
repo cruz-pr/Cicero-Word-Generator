@@ -40,22 +40,24 @@ namespace WordGenerator.Controls
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.helpOnSupportedOperationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permanentValueLabel = new System.Windows.Forms.Label();
+            this.vedIDbox = new System.Windows.Forms.Label();
+            this.LUTinputLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.valueSelector)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 1);
+            this.textBox1.Location = new System.Drawing.Point(44, 1);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
+            this.textBox1.Size = new System.Drawing.Size(70, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // valueSelector
             // 
             this.valueSelector.DecimalPlaces = 3;
-            this.valueSelector.Location = new System.Drawing.Point(107, 0);
+            this.valueSelector.Location = new System.Drawing.Point(117, 1);
             this.valueSelector.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -67,7 +69,7 @@ namespace WordGenerator.Controls
             0,
             -2147483648});
             this.valueSelector.Name = "valueSelector";
-            this.valueSelector.Size = new System.Drawing.Size(81, 20);
+            this.valueSelector.Size = new System.Drawing.Size(83, 20);
             this.valueSelector.TabIndex = 1;
             this.valueSelector.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             this.valueSelector.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown1_MouseClick);
@@ -77,9 +79,9 @@ namespace WordGenerator.Controls
             // 
             this.listSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.listSelector.FormattingEnabled = true;
-            this.listSelector.Location = new System.Drawing.Point(107, 0);
+            this.listSelector.Location = new System.Drawing.Point(117, 1);
             this.listSelector.Name = "listSelector";
-            this.listSelector.Size = new System.Drawing.Size(81, 21);
+            this.listSelector.Size = new System.Drawing.Size(83, 21);
             this.listSelector.TabIndex = 2;
             this.listSelector.Visible = false;
             this.listSelector.SelectedIndexChanged += new System.EventHandler(this.listSelector_SelectedIndexChanged);
@@ -99,7 +101,7 @@ namespace WordGenerator.Controls
             // derivedCheckBox
             // 
             this.derivedCheckBox.AutoSize = true;
-            this.derivedCheckBox.Location = new System.Drawing.Point(194, 4);
+            this.derivedCheckBox.Location = new System.Drawing.Point(202, 4);
             this.derivedCheckBox.Name = "derivedCheckBox";
             this.derivedCheckBox.Size = new System.Drawing.Size(15, 14);
             this.derivedCheckBox.TabIndex = 4;
@@ -122,7 +124,7 @@ namespace WordGenerator.Controls
             this.formulaTextBox.ContextMenuStrip = this.contextMenuStrip1;
             this.formulaTextBox.Location = new System.Drawing.Point(3, 28);
             this.formulaTextBox.Name = "formulaTextBox";
-            this.formulaTextBox.Size = new System.Drawing.Size(206, 20);
+            this.formulaTextBox.Size = new System.Drawing.Size(214, 20);
             this.formulaTextBox.TabIndex = 8;
             this.formulaTextBox.Visible = false;
             this.formulaTextBox.TextChanged += new System.EventHandler(this.formulaTextBox_TextChanged);
@@ -145,7 +147,11 @@ namespace WordGenerator.Controls
             // 
             this.permanentValueLabel.AutoSize = true;
             this.permanentValueLabel.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
+            this.permanentValueLabel.Location = new System.Drawing.Point(114, 5);
+=======
             this.permanentValueLabel.Location = new System.Drawing.Point(110, 5);
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.permanentValueLabel.Name = "permanentValueLabel";
             this.permanentValueLabel.Size = new System.Drawing.Size(110, 13);
             this.permanentValueLabel.TabIndex = 9;
@@ -153,10 +159,29 @@ namespace WordGenerator.Controls
             this.permanentValueLabel.Visible = false;
             this.permanentValueLabel.Click += new System.EventHandler(this.permanentValueLabel_Click);
             // 
+            // vedIDbox
+            // 
+            this.vedIDbox.AutoSize = true;
+            this.vedIDbox.Location = new System.Drawing.Point(19, 5);
+            this.vedIDbox.Name = "vedIDbox";
+            this.vedIDbox.Size = new System.Drawing.Size(36, 13);
+            this.vedIDbox.TabIndex = 10;
+            this.vedIDbox.Text = "vedID";
+            // 
+            // LUTinputLbl
+            // 
+            this.LUTinputLbl.AutoSize = true;
+            this.LUTinputLbl.Location = new System.Drawing.Point(1, 28);
+            this.LUTinputLbl.Name = "LUTinputLbl";
+            this.LUTinputLbl.Size = new System.Drawing.Size(65, 13);
+            this.LUTinputLbl.TabIndex = 11;
+            this.LUTinputLbl.Text = "LUTinputLbl";
+            // 
             // VariableEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LUTinputLbl);
             this.Controls.Add(this.permanentValueLabel);
             this.Controls.Add(this.formulaTextBox);
             this.Controls.Add(this.derivedValueLabel);
@@ -165,6 +190,7 @@ namespace WordGenerator.Controls
             this.Controls.Add(this.listSelector);
             this.Controls.Add(this.valueSelector);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.vedIDbox);
             this.Name = "VariableEditor";
             this.Size = new System.Drawing.Size(220, 104);
             this.Load += new System.EventHandler(this.VariableEditor_Load);
@@ -189,5 +215,7 @@ namespace WordGenerator.Controls
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpOnSupportedOperationsToolStripMenuItem;
         private System.Windows.Forms.Label permanentValueLabel;
+        private System.Windows.Forms.Label vedIDbox;
+        private System.Windows.Forms.Label LUTinputLbl;
     }
 }
