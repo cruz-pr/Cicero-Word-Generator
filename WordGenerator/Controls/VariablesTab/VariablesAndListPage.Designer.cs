@@ -91,10 +91,17 @@ namespace WordGenerator.Controls
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
+<<<<<<< HEAD
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.23837F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.68066F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.54049F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.54049F));
+=======
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.71028F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.28972F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.nameLabel, 1, 0);
@@ -109,7 +116,11 @@ namespace WordGenerator.Controls
             // label1
             // 
             this.label1.AutoSize = true;
+<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(123, 0);
+=======
+            this.label1.Location = new System.Drawing.Point(62, 0);
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 1;
@@ -120,14 +131,22 @@ namespace WordGenerator.Controls
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
+<<<<<<< HEAD
             this.label2.Size = new System.Drawing.Size(23, 13);
+=======
+            this.label2.Size = new System.Drawing.Size(12, 19);
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.label2.TabIndex = 3;
             this.label2.Text = "Del";
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
+<<<<<<< HEAD
             this.nameLabel.Location = new System.Drawing.Point(51, 0);
+=======
+            this.nameLabel.Location = new System.Drawing.Point(21, 0);
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(35, 13);
             this.nameLabel.TabIndex = 0;
@@ -136,12 +155,20 @@ namespace WordGenerator.Controls
             // label3
             // 
             this.label3.AutoSize = true;
+<<<<<<< HEAD
             this.label3.Location = new System.Drawing.Point(176, 0);
+=======
+            this.label3.Location = new System.Drawing.Point(115, 0);
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 19);
             this.label3.TabIndex = 4;
             this.label3.Text = "Equation?";
+<<<<<<< HEAD
             // 
+=======
+            //
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(24, 74);

@@ -213,6 +213,7 @@ namespace WordGenerator.Controls
                 variable.DBDriven = true;
                 variable.DBFieldNumber = (listSelector.SelectedIndex - 10);
             }
+<<<<<<< HEAD
 
             updateLayout();
 
@@ -221,6 +222,9 @@ namespace WordGenerator.Controls
              * WHERE????!!?!?!?
              * \
              * 
+=======
+            /* else //LUT Options //Moved to different event handler
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             {
                 this.backupValue = valueSelector.Value;
                 variable.ListDriven = false;
@@ -505,8 +509,11 @@ namespace WordGenerator.Controls
                 varSelector vs1 = new varSelector(variable);
                 vs1.ShowDialog();
                 toolTip1.SetToolTip(this.listSelector, "Value Calculated Based On " + variable.LUTInput.VariableName);
+<<<<<<< HEAD
 
                 updateLayout();
+=======
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             }
         }
 

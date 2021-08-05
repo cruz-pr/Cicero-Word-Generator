@@ -178,7 +178,10 @@ namespace WordGenerator.Controls.LookUpTableTab
                 LUTSelectorListBox.Items.Add(table.Name);
             }
             LUTSelector.SelectedIndex = selected;
+<<<<<<< HEAD
             LUTSelectorListBox.SelectedIndex = selected;
+=======
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
         }
 
 
@@ -189,6 +192,10 @@ namespace WordGenerator.Controls.LookUpTableTab
             {
                 //Storage.settingsData.LookupTables.RemoveAt(LUTSelectorListBox.SelectedIndex);
                 Storage.settingsData.LookupTables.RemoveAt(LUTSelector.SelectedIndex);
+<<<<<<< HEAD
+=======
+                
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             }
 
         }
@@ -272,6 +279,7 @@ namespace WordGenerator.Controls.LookUpTableTab
         {
             WordGenerator.MainClientForm.instance.variablesEditor.discardAndRefreshAllVariableEditors();
         }
+<<<<<<< HEAD
 
         private void LUTSelectorListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -281,5 +289,7 @@ namespace WordGenerator.Controls.LookUpTableTab
             textBox1.Text = Storage.settingsData.LookupTables[LUTSelectorListBox.SelectedIndex].Name;
 
         }
+=======
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
     }
 }
