@@ -18,6 +18,25 @@ namespace WordGenerator.Controls
             get { return variable.VariableName; }
         }
 
+        public string VarFormula
+        {
+            get { return variable.VariableFormula; }
+        }
+
+        public string LUTInputVarName
+        {
+            get
+            {
+                if (variable.LUTDriven)
+                {
+                    return variable.LUTInput.VariableName;
+                } else
+                {
+                    return "";
+                }
+            }
+        }
+
         private int vedID;
 
         private bool listLocked;
@@ -105,11 +124,12 @@ namespace WordGenerator.Controls
                 this.valueSelector.Value = (decimal)this.variable.VariableValue;
             }
 
-            this.textBox1.Text = variable.VariableName;
+            this.textBox1.Text = var.VariableName;
             this.vedID = id;
             this.vedIDbox.Text = this.vedID.ToString();
             this.derivedCheckBox.Checked = var.DerivedVariable;
             this.formulaTextBox.Text = var.VariableFormula;
+            this.LUTinputLbl.Visible = false;
 
             updateLayout();
              
@@ -175,7 +195,6 @@ namespace WordGenerator.Controls
                 variable.LUTDriven = false;
                 this.valueSelector.Value = backupValue;
                 toolTip1.SetToolTip(this.listSelector, "");
-               
             }
             else if (listSelector.SelectedIndex < 11) //List Options
             {
@@ -194,7 +213,14 @@ namespace WordGenerator.Controls
                 variable.DBDriven = true;
                 variable.DBFieldNumber = (listSelector.SelectedIndex - 10);
             }
+
+            updateLayout();
+
             /* else //LUT Options //Moved to different event handler
+             * 
+             * WHERE????!!?!?!?
+             * \
+             * 
             {
                 this.backupValue = valueSelector.Value;
                 variable.ListDriven = false;
@@ -332,36 +358,42 @@ namespace WordGenerator.Controls
             {
                 permanentValueLabel.Visible = false;
 
-                if (!variable.DerivedVariable)
-                {
-
-                    this.valueSelector.Visible = true;
-                    this.formulaTextBox.Visible = false;
-
-
-                    derivedValueLabel.Visible = false;
-
-
-
-                    this.BorderStyle = BorderStyle.None;
-
-                    this.Size = new Size(220, 22);
-                }
-                else
+                if (variable.DerivedVariable)
                 {
                     this.valueSelector.Visible = false;
                     listSelector.SelectedIndex = 0;
                     listSelector.Visible = false;
                     this.formulaTextBox.Visible = true;
                     derivedValueLabel.Visible = true;
+                    LUTinputLbl.Visible = false;
 
                     this.Size = new Size(220, 104);
                     this.BorderStyle = BorderStyle.FixedSingle;
 
                     updateDerivedValue();
 
+                } else if (variable.LUTDriven)
+                {
+                    this.valueSelector.Visible = true;
+                    this.formulaTextBox.Visible = false;
+                    derivedValueLabel.Visible = false;
+                    LUTinputLbl.Visible = true;
 
+                    this.BorderStyle = BorderStyle.FixedSingle;
+                    this.Size = new Size(220, 50);
+                    updateLUTInputVar();
+
+                } else
+                {
+                    this.valueSelector.Visible = true;
+                    this.formulaTextBox.Visible = false;
+                    derivedValueLabel.Visible = false;
+                    LUTinputLbl.Visible = false;
+
+                    this.BorderStyle = BorderStyle.None;
+                    this.Size = new Size(220, 22);
                 }
+
             }
         }
 
@@ -414,6 +446,19 @@ namespace WordGenerator.Controls
             }
         }
 
+        public void updateLUTInputVar()
+        {
+            if (variable != null && variable.LUTDriven)
+            {
+                if (variable.LUTDriven)
+                {
+                    //LUTinputLbl.Visible = true;
+                    LUTinputLbl.BackColor = Color.Transparent;
+                    LUTinputLbl.Text = "Input variable to LUT: [" + variable.LUTInput.VariableName + "]";
+                }
+            }
+        }
+
         private void formulaTextBox_TextChanged(object sender, EventArgs e)
         {
             this.variable.VariableFormula = formulaTextBox.Text;
@@ -460,6 +505,8 @@ namespace WordGenerator.Controls
                 varSelector vs1 = new varSelector(variable);
                 vs1.ShowDialog();
                 toolTip1.SetToolTip(this.listSelector, "Value Calculated Based On " + variable.LUTInput.VariableName);
+
+                updateLayout();
             }
         }
 

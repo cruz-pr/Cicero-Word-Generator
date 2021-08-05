@@ -44,6 +44,7 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.varUpdate = new System.Windows.Forms.Button();
+            this.LUTSelectorListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.tableDisplay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,7 +170,7 @@
             this.openFileDialog1.AddExtension = false;
             this.openFileDialog1.Filter = "\"CSV Files\"|*.csv";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            //
+            // 
             // varUpdate
             // 
             this.varUpdate.Location = new System.Drawing.Point(610, 183);
@@ -180,10 +181,20 @@
             this.varUpdate.UseVisualStyleBackColor = true;
             this.varUpdate.Click += new System.EventHandler(this.varUpdate_Click);
             // 
+            // LUTSelectorListBox
+            // 
+            this.LUTSelectorListBox.FormattingEnabled = true;
+            this.LUTSelectorListBox.Location = new System.Drawing.Point(17, 166);
+            this.LUTSelectorListBox.Name = "LUTSelectorListBox";
+            this.LUTSelectorListBox.Size = new System.Drawing.Size(145, 433);
+            this.LUTSelectorListBox.TabIndex = 13;
+            this.LUTSelectorListBox.SelectedIndexChanged += new System.EventHandler(this.LUTSelectorListBox_SelectedIndexChanged);
+            // 
             // LookupTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LUTSelectorListBox);
             this.Controls.Add(this.varUpdate);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.label3);
@@ -218,6 +229,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button varUpdate;
-
+        private System.Windows.Forms.ListBox LUTSelectorListBox;
     }
 }

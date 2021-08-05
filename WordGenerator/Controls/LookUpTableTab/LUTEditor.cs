@@ -32,10 +32,13 @@ namespace WordGenerator.Controls.LookUpTableTab
             //Clear the controls
             tableDisplay.Rows.Clear();
             LUTSelector.Items.Clear();
+            LUTSelectorListBox.Items.Clear();
+
             //Populate the dropdown list
             foreach (LUT table in Storage.settingsData.LookupTables)
             {
                 LUTSelector.Items.Add(table.Name);
+                LUTSelectorListBox.Items.Add(table.Name);
             }
             //If there is at least one LUT
             if (LUTSelector.Items.Count > 0)
@@ -44,6 +47,7 @@ namespace WordGenerator.Controls.LookUpTableTab
                 foreach (double key in Storage.settingsData.LookupTables[0].Table.Keys)
                 tableDisplay.Rows.Add(key, Storage.settingsData.LookupTables[0].Table[key]);
                 LUTSelector.SelectedIndex = 0;
+                LUTSelectorListBox.SelectedIndex = 0;
             }
             //Otherwise disable the data grid view
             else
@@ -60,12 +64,15 @@ namespace WordGenerator.Controls.LookUpTableTab
  
             tableDisplay.Rows.Clear();
             LUTSelector.Items.Clear();
+            LUTSelectorListBox.Items.Clear();
             tableDisplay.Enabled = true;
             foreach (LUT table in Storage.settingsData.LookupTables)
             {
                 LUTSelector.Items.Add(table.Name);
+                LUTSelectorListBox.Items.Add(table.Name);
             }
             LUTSelector.SelectedIndex = Storage.settingsData.LookupTables.Count() - 1;
+            LUTSelectorListBox.SelectedIndex = Storage.settingsData.LookupTables.Count() - 1;
             textBox1.Text = "New Table";
         }
 
@@ -156,15 +163,22 @@ namespace WordGenerator.Controls.LookUpTableTab
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             int selected = LUTSelector.SelectedIndex;
+            //int selected = LUTSelectorListBox.SelectedIndex;
+            
+            
             //Rename the LUT in Storage first
             Storage.settingsData.LookupTables[selected].Name = textBox1.Text.ToString();
+
             //Then repopulate the dropdown
             LUTSelector.Items.Clear();
+            LUTSelectorListBox.Items.Clear();
             foreach (LUT table in Storage.settingsData.LookupTables)
             {
                 LUTSelector.Items.Add(table.Name);
+                LUTSelectorListBox.Items.Add(table.Name);
             }
             LUTSelector.SelectedIndex = selected;
+            LUTSelectorListBox.SelectedIndex = selected;
         }
 
 
@@ -173,10 +187,10 @@ namespace WordGenerator.Controls.LookUpTableTab
         {
             if (MessageBox.Show("Are you sure you want to delete this lookup table?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                //Storage.settingsData.LookupTables.RemoveAt(LUTSelectorListBox.SelectedIndex);
                 Storage.settingsData.LookupTables.RemoveAt(LUTSelector.SelectedIndex);
-                
             }
-            
+
         }
 
         private void loadLUT_Click(object sender, EventArgs e)
@@ -257,6 +271,15 @@ namespace WordGenerator.Controls.LookUpTableTab
         private void varUpdate_Click(object sender, EventArgs e)
         {
             WordGenerator.MainClientForm.instance.variablesEditor.discardAndRefreshAllVariableEditors();
+        }
+
+        private void LUTSelectorListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tableDisplay.Rows.Clear();
+            foreach (double key in Storage.settingsData.LookupTables[LUTSelectorListBox.SelectedIndex].Table.Keys)
+                tableDisplay.Rows.Add(key, Storage.settingsData.LookupTables[LUTSelectorListBox.SelectedIndex].Table[key]);
+            textBox1.Text = Storage.settingsData.LookupTables[LUTSelectorListBox.SelectedIndex].Name;
+
         }
     }
 }

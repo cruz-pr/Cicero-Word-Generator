@@ -62,6 +62,8 @@ namespace WordGenerator.Controls
             this.listFillerSelector = new System.Windows.Forms.ComboBox();
             this.LockMessage = new System.Windows.Forms.Label();
             this.searchVarBox = new System.Windows.Forms.TextBox();
+            this.clearVarSearchButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.listEditorPanelPlaceholder = new WordGenerator.Controls.ListEditorPanel();
             this.runControl1 = new WordGenerator.Controls.RunControl();
             this.variablesPanel.SuspendLayout();
@@ -82,17 +84,17 @@ namespace WordGenerator.Controls
             this.variablesPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.variablesPanel.Location = new System.Drawing.Point(3, 0);
             this.variablesPanel.Name = "variablesPanel";
-            this.variablesPanel.Size = new System.Drawing.Size(235, 701);
+            this.variablesPanel.Size = new System.Drawing.Size(237, 701);
             this.variablesPanel.TabIndex = 0;
             this.variablesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.variablesPanel_Paint);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.71028F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.28972F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.23837F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.68066F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.54049F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.54049F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.nameLabel, 1, 0);
@@ -100,14 +102,14 @@ namespace WordGenerator.Controls
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(229, 19);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 0);
+            this.label1.Location = new System.Drawing.Point(123, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 1;
@@ -118,25 +120,25 @@ namespace WordGenerator.Controls
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 19);
+            this.label2.Size = new System.Drawing.Size(23, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Del";
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(21, 0);
+            this.nameLabel.Location = new System.Drawing.Point(51, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(29, 19);
+            this.nameLabel.Size = new System.Drawing.Size(35, 13);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(111, 0);
+            this.label3.Location = new System.Drawing.Point(176, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(49, 19);
             this.label3.TabIndex = 4;
             this.label3.Text = "Equation?";
             // 
@@ -449,11 +451,31 @@ namespace WordGenerator.Controls
             // 
             this.searchVarBox.AcceptsReturn = true;
             this.searchVarBox.AcceptsTab = true;
-            this.searchVarBox.Location = new System.Drawing.Point(55, 37);
+            this.searchVarBox.Location = new System.Drawing.Point(24, 37);
             this.searchVarBox.Name = "searchVarBox";
-            this.searchVarBox.Size = new System.Drawing.Size(100, 20);
+            this.searchVarBox.Size = new System.Drawing.Size(128, 20);
             this.searchVarBox.TabIndex = 12;
             this.searchVarBox.TextChanged += new System.EventHandler(this.searchVarBox_TextChanged_1);
+            // 
+            // clearVarSearchButton
+            // 
+            this.clearVarSearchButton.Location = new System.Drawing.Point(158, 37);
+            this.clearVarSearchButton.Name = "clearVarSearchButton";
+            this.clearVarSearchButton.Size = new System.Drawing.Size(41, 20);
+            this.clearVarSearchButton.TabIndex = 13;
+            this.clearVarSearchButton.Text = "Clear";
+            this.clearVarSearchButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.clearVarSearchButton.UseVisualStyleBackColor = true;
+            this.clearVarSearchButton.Click += new System.EventHandler(this.clearVarSearchButton_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(185, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Search variable names and equations";
             // 
             // listEditorPanelPlaceholder
             // 
@@ -475,6 +497,8 @@ namespace WordGenerator.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.clearVarSearchButton);
             this.Controls.Add(this.searchVarBox);
             this.Controls.Add(this.LockMessage);
             this.Controls.Add(this.listFiller);
@@ -545,5 +569,7 @@ namespace WordGenerator.Controls
         private RunControl runControl1;
         private System.Windows.Forms.Button loadCalSequenceFromCurrentSequence;
         private System.Windows.Forms.TextBox searchVarBox;
+        private System.Windows.Forms.Button clearVarSearchButton;
+        private System.Windows.Forms.Label label7;
     }
 }

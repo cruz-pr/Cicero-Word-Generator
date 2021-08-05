@@ -570,39 +570,25 @@ namespace WordGenerator.Controls
 
         private void searchVariableEditors(string toSearch)
         {
+            toSearch = toSearch.ToLower();
 
             this.variablesPanel.SuspendLayout();
-            /*
-            if (toSearch.Length > prevSearch.Length)
-            { // new search contains new chars, so filter out
-                foreach (VariableEditor ved in variableEditors)
-                {
-                    if (!ved.VarName.ToLower().Contains(toSearch.ToLower()) && ved.Visible)
-                    {
-                        ved.Hide();
-                    }
-                }
-            }
-            else if (toSearch.Length <= prevSearch.Length || toSearch == "")
-            { // new search is shorter so have to add again the ones that contain
-                foreach (VariableEditor ved in variableEditors)
-                {
-                    if (ved.VarName.ToLower().Contains(toSearch.ToLower()) && !ved.Visible)
-                    {
-                        ved.Show();
-                    }
-                }
-            }*/
 
             if (toSearch != prevSearch)
             {
                 foreach (VariableEditor ved in variableEditors)
                 {
-                    if (!ved.VarName.ToLower().Contains(toSearch.ToLower()) && ved.Visible)
+
+                    string varName = ved.VarName.ToLower();
+                    string varFormula = ved.VarFormula.ToLower();
+                    string inputLUTVarName = ved.LUTInputVarName.ToLower();
+                    bool varContainsToSearchInNameOrFormulaOrLUTInVarName = varName.Contains(toSearch) || varFormula.Contains(toSearch) || inputLUTVarName.Contains(toSearch);
+
+                    if (!varContainsToSearchInNameOrFormulaOrLUTInVarName && ved.Visible)
                     {
                         ved.Hide();
                     }
-                    else if (ved.VarName.ToLower().Contains(toSearch.ToLower()) && !ved.Visible)
+                    else if (varContainsToSearchInNameOrFormulaOrLUTInVarName && !ved.Visible)
                     {
                         ved.Show();
                     }
@@ -621,8 +607,6 @@ namespace WordGenerator.Controls
             //MessageBox.Show(toSearch);
         }
 
-
-        /*
         private void clearVarSearchButton_Click(object sender, EventArgs e)
         {
             searchVarBox.Text = "";
@@ -634,7 +618,7 @@ namespace WordGenerator.Controls
             searchVariableEditors("");
             //throw new NotImplementedException();
         }
-        */
+        
 
     }
 }

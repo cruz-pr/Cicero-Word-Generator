@@ -17,6 +17,7 @@ namespace WordGenerator.Controls
         public varSelector(Variable varIn)
         {
             InitializeComponent();
+            boundVarNameLbl.Text = "[" + varIn.VariableName + "]";
             foreach (Variable var in Storage.sequenceData.Variables)
             {
                 comboBox1.Items.Add(var.VariableName);
