@@ -44,12 +44,13 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.varUpdate = new System.Windows.Forms.Button();
+            this.LUTSelectorListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.tableDisplay)).BeginInit();
             this.SuspendLayout();
             // 
             // newLUTButton
             // 
-            this.newLUTButton.Location = new System.Drawing.Point(17, 90);
+            this.newLUTButton.Location = new System.Drawing.Point(101, 75);
             this.newLUTButton.Name = "newLUTButton";
             this.newLUTButton.Size = new System.Drawing.Size(145, 70);
             this.newLUTButton.TabIndex = 3;
@@ -62,16 +63,15 @@
             // 
             this.LUTSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LUTSelector.FormattingEnabled = true;
-            this.LUTSelector.Location = new System.Drawing.Point(755, 20);
+            this.LUTSelector.Location = new System.Drawing.Point(610, 361);
             this.LUTSelector.Name = "LUTSelector";
             this.LUTSelector.Size = new System.Drawing.Size(145, 21);
             this.LUTSelector.TabIndex = 4;
-            this.LUTSelector.SelectedIndexChanged += new System.EventHandler(this.LUTSelector_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(607, 25);
+            this.label1.Location = new System.Drawing.Point(98, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(142, 13);
             this.label1.TabIndex = 5;
@@ -117,7 +117,7 @@
             // 
             // loadLUT
             // 
-            this.loadLUT.Location = new System.Drawing.Point(610, 59);
+            this.loadLUT.Location = new System.Drawing.Point(610, 110);
             this.loadLUT.Name = "loadLUT";
             this.loadLUT.Size = new System.Drawing.Size(145, 70);
             this.loadLUT.TabIndex = 7;
@@ -127,7 +127,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(736, 144);
+            this.textBox1.Location = new System.Drawing.Point(732, 45);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 8;
@@ -136,7 +136,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(614, 147);
+            this.label2.Location = new System.Drawing.Point(607, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 13);
             this.label2.TabIndex = 9;
@@ -155,7 +155,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(761, 59);
+            this.deleteButton.Location = new System.Drawing.Point(761, 110);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(145, 70);
             this.deleteButton.TabIndex = 11;
@@ -171,7 +171,7 @@
             // 
             // varUpdate
             // 
-            this.varUpdate.Location = new System.Drawing.Point(610, 182);
+            this.varUpdate.Location = new System.Drawing.Point(610, 215);
             this.varUpdate.Name = "varUpdate";
             this.varUpdate.Size = new System.Drawing.Size(145, 70);
             this.varUpdate.TabIndex = 12;
@@ -179,10 +179,20 @@
             this.varUpdate.UseVisualStyleBackColor = true;
             this.varUpdate.Click += new System.EventHandler(this.varUpdate_Click);
             // 
+            // LUTSelectorListBox
+            // 
+            this.LUTSelectorListBox.FormattingEnabled = true;
+            this.LUTSelectorListBox.Location = new System.Drawing.Point(101, 204);
+            this.LUTSelectorListBox.Name = "LUTSelectorListBox";
+            this.LUTSelectorListBox.Size = new System.Drawing.Size(145, 433);
+            this.LUTSelectorListBox.TabIndex = 13;
+            this.LUTSelectorListBox.SelectedIndexChanged += new System.EventHandler(this.LUTSelectorListBox_SelectedIndexChanged);
+            // 
             // LookupTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LUTSelectorListBox);
             this.Controls.Add(this.varUpdate);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.label3);
@@ -217,5 +227,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button varUpdate;
+        private System.Windows.Forms.ListBox LUTSelectorListBox;
     }
 }
