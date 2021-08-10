@@ -147,7 +147,11 @@ namespace WordGenerator.Controls
             // 
             this.permanentValueLabel.AutoSize = true;
             this.permanentValueLabel.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.permanentValueLabel.Location = new System.Drawing.Point(114, 5);
+=======
+            this.permanentValueLabel.Location = new System.Drawing.Point(110, 5);
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
             this.permanentValueLabel.Name = "permanentValueLabel";
             this.permanentValueLabel.Size = new System.Drawing.Size(110, 13);
             this.permanentValueLabel.TabIndex = 9;

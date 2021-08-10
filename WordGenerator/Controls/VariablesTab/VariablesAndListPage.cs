@@ -530,11 +530,19 @@ namespace WordGenerator.Controls
                 DialogResult dialogResult = new DialogResult();
                 int numOfFillers = (int)(1 + (this.listFillerStop.Value - this.listFillerStart.Value) / this.listFillerStep.Value);
                 if (numOfFillers > 500)
+<<<<<<< HEAD
                 {
                     dialogResult = MessageBox.Show("More than 500 list items are about to be added - are you sure?", "Warning", MessageBoxButtons.YesNo);
                 }
                 if (dialogResult == DialogResult.No)
                 {
+=======
+                {
+                    dialogResult = MessageBox.Show("More than 500 list items are about to be added - are you sure?", "Warning", MessageBoxButtons.YesNo);
+                }
+                if (dialogResult == DialogResult.No)
+                {
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
                     //do nothing
                 }
                 else

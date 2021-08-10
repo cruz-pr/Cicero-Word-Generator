@@ -241,6 +241,7 @@ namespace WordGenerator.Controls.LookUpTableTab
                 //LUTSelector.Items.Add(table.Name);
                 LUTSelectorListBox.Items.Add(table.Name);
             }
+<<<<<<< HEAD
 
             LUTSelectorListBox.ResumeLayout();
 
@@ -267,6 +268,13 @@ namespace WordGenerator.Controls.LookUpTableTab
                 MessageBox.Show("Table name [" + newName + "] is already in use.");
             }
 
+=======
+            LUTSelector.SelectedIndex = selected;
+<<<<<<< HEAD
+            LUTSelectorListBox.SelectedIndex = selected;
+=======
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
+>>>>>>> 2a2deec483478bc0fe417a6500978ecd3d47fd9a
         }
 
         private bool uniqueLUTName(string newName)
@@ -331,6 +339,7 @@ namespace WordGenerator.Controls.LookUpTableTab
         {
             foreach (Variable var in Storage.sequenceData.Variables)
             {
+<<<<<<< HEAD
                 if (var.LUTDriven)
                 {
                     if (selected == (var.LUTNumber))
@@ -339,6 +348,14 @@ namespace WordGenerator.Controls.LookUpTableTab
                         return true;
                     }
                 }
+=======
+                //Storage.settingsData.LookupTables.RemoveAt(LUTSelectorListBox.SelectedIndex);
+                Storage.settingsData.LookupTables.RemoveAt(LUTSelector.SelectedIndex);
+<<<<<<< HEAD
+=======
+                
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
+>>>>>>> 2a2deec483478bc0fe417a6500978ecd3d47fd9a
             }
 
             return false;
@@ -421,6 +438,7 @@ namespace WordGenerator.Controls.LookUpTableTab
         {
             WordGenerator.MainClientForm.instance.variablesEditor.discardAndRefreshAllVariableEditors();
         }
+<<<<<<< HEAD
 
         private void newLUTButton_Click(object sender, MouseEventArgs e)
         {
@@ -457,5 +475,7 @@ namespace WordGenerator.Controls.LookUpTableTab
         {
 
         }
+=======
+>>>>>>> ee12e7c0a76637c8bed57a6a37e5891d63083ea0
     }
 }
