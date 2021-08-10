@@ -25,7 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,7 +54,9 @@
     <Reference Include="libFrontPanel-csharp">
       <HintPath>..\Opal Kelly\Opal Kelly 4.0.8\API-32\Csharp\libFrontPanel-csharp.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="NationalInstruments.Common">
       <HintPath>..\Dynamic Linked Libraries\NationalInstruments.Common.dll</HintPath>
     </Reference>
@@ -101,10 +103,10 @@
     <Compile Include="VariableTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Shadow Include="Test References\WordGenerator.accessor" />
+    <None Include="Test References\WordGenerator.accessor" />
   </ItemGroup>
   <ItemGroup>
-    <Shadow Include="Test References\AtticusServer.accessor" />
+    <None Include="Test References\AtticusServer.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

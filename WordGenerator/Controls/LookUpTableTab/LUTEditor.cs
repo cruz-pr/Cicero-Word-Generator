@@ -287,17 +287,18 @@ namespace WordGenerator.Controls.LookUpTableTab
             // Check look-up table is not bound to a variable
 
             int selected = LUTSelectorListBox.SelectedIndex;
+            string LUTName = Storage.settingsData.LookupTables[selected].Name;
             string varName = "";
 
-            MessageBox.Show("Selected index= " + selected.ToString() + ", table [" + Storage.settingsData.LookupTables[selected].Name + "].");
+            //MessageBox.Show("Selected index= " + selected.ToString() + ", table [" + Storage.settingsData.LookupTables[selected].Name + "].");
 
             if (lookupTableInUse(selected, ref varName))
             {
-                MessageBox.Show("This lookup table is bound to variable [" + varName + "]. Unbound this table before deleting.");
+                MessageBox.Show("Lookup table [" + LUTName + "] is bound to variable [" + varName + "]. Unbound this table before deleting.", "Lookup table in use");
                 return;
             }
 
-            if (MessageBox.Show("Are you sure you want to delete this lookup table?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to delete lookup table [" + LUTName + "]?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //Storage.settingsData.LookupTables.RemoveAt(LUTSelector.SelectedIndex);
                 Storage.settingsData.LookupTables.RemoveAt(selected);
@@ -428,20 +429,25 @@ namespace WordGenerator.Controls.LookUpTableTab
 
         private void clearLUTButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to clear this lookup table?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                int selected = LUTSelectorListBox.SelectedIndex;
-                Storage.settingsData.LookupTables[selected].Table.Clear();
-                
-                /*
-                foreach (double key in Storage.settingsData.LookupTables[selected].Table.Keys)
-                {
-                    //tableDisplay.Rows.Add(key, Storage.settingsData.LookupTables[selected].Table[key]);
-                    
+            int selected = LUTSelectorListBox.SelectedIndex;
+            string LUTName = Storage.settingsData.LookupTables[selected].Name;
+            string varName = "";
 
-                    tableDisplay.Rows.Remove(key,Storage.settingsData.LookupTables[selected].Table.Keys);
-                }*/
-                //Storage.settingsData.LookupTables.RemoveAt(LUTSelectorListBox.SelectedIndex);
+            if (lookupTableInUse(selected, ref varName))
+            {
+                if (MessageBox.Show("Lookup table [" + LUTName + "] is bound to variable [" + varName + "]. Are you sure you want to clear this lookup table?", "Lookup table in use", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Storage.settingsData.LookupTables[selected].Table.Clear();
+                    reloadLUTSelectorListBox(selected);
+                    WordGenerator.MainClientForm.instance.variablesEditor.layout();
+                }
+
+                return;
+            } 
+
+            if (MessageBox.Show("Are you sure you want to clear lookup table [" + LUTName + "]?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Storage.settingsData.LookupTables[selected].Table.Clear();
                 reloadLUTSelectorListBox(selected);
                 WordGenerator.MainClientForm.instance.variablesEditor.layout();
             }
