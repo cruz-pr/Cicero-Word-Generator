@@ -37,6 +37,27 @@ namespace WordGenerator.Controls
             }
         }
 
+        public bool VarLUTDriven
+        {
+            get { return variable.LUTDriven;  }
+        }
+
+        public string VarLUTName
+        {
+            get
+            {
+                if (VarLUTDriven)
+                {
+                    int LUTindex = this.variable.LUTNumber;
+                    return Storage.settingsData.LookupTables[LUTindex].Name;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
         private int vedID;
 
         private bool listLocked;

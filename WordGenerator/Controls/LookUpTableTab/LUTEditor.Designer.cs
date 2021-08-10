@@ -45,6 +45,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.varUpdate = new System.Windows.Forms.Button();
             this.LUTSelectorListBox = new System.Windows.Forms.ListBox();
+            this.renameButton = new System.Windows.Forms.Button();
+            this.clearLUTButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tableDisplay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,6 +100,7 @@
             this.tableDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.tableDisplay.Size = new System.Drawing.Size(203, 878);
             this.tableDisplay.TabIndex = 6;
+            this.tableDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableDisplay_CellContentClick_1);
             this.tableDisplay.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableDisplay_CellEndEdit);
             this.tableDisplay.EnabledChanged += new System.EventHandler(this.tableDisplay_EnabledChanged);
             // 
@@ -155,7 +158,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(761, 110);
+            this.deleteButton.Location = new System.Drawing.Point(792, 215);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(145, 70);
             this.deleteButton.TabIndex = 11;
@@ -188,10 +191,32 @@
             this.LUTSelectorListBox.TabIndex = 13;
             this.LUTSelectorListBox.SelectedIndexChanged += new System.EventHandler(this.LUTSelectorListBox_SelectedIndexChanged);
             // 
+            // renameButton
+            // 
+            this.renameButton.Location = new System.Drawing.Point(838, 43);
+            this.renameButton.Name = "renameButton";
+            this.renameButton.Size = new System.Drawing.Size(68, 23);
+            this.renameButton.TabIndex = 14;
+            this.renameButton.Text = "Rename";
+            this.renameButton.UseVisualStyleBackColor = true;
+            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
+            // 
+            // clearLUTButton
+            // 
+            this.clearLUTButton.Location = new System.Drawing.Point(792, 110);
+            this.clearLUTButton.Name = "clearLUTButton";
+            this.clearLUTButton.Size = new System.Drawing.Size(145, 70);
+            this.clearLUTButton.TabIndex = 15;
+            this.clearLUTButton.Text = "Clear LUT";
+            this.clearLUTButton.UseVisualStyleBackColor = true;
+            this.clearLUTButton.Click += new System.EventHandler(this.clearLUTButton_Click);
+            // 
             // LookupTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.clearLUTButton);
+            this.Controls.Add(this.renameButton);
             this.Controls.Add(this.LUTSelectorListBox);
             this.Controls.Add(this.varUpdate);
             this.Controls.Add(this.deleteButton);
@@ -228,5 +253,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button varUpdate;
         private System.Windows.Forms.ListBox LUTSelectorListBox;
+        private System.Windows.Forms.Button renameButton;
+        private System.Windows.Forms.Button clearLUTButton;
     }
 }

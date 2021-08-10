@@ -169,8 +169,8 @@ namespace DataStructures
             return true;
         }
 
-        private bool valueFromVariable;
 
+        private bool valueFromVariable;
         public bool ValueFromVariable
         {
             get { return valueFromVariable; }
@@ -190,8 +190,9 @@ namespace DataStructures
                     updateAutoName();
             }
         }
-        private Variable valueVariable;
+        
 
+        private Variable valueVariable;
         public Variable ValueVariable
         {
             get { return valueVariable; }
@@ -201,6 +202,7 @@ namespace DataStructures
                updateAutoName();
             }
         }
+
 
         public Pulse(Pulse copyMe)
         {
@@ -219,8 +221,8 @@ namespace DataStructures
             this.autoName = copyMe.autoName;
         }
 
-        private string pulseName;
 
+        private string pulseName;
         public string PulseName
         {
             get {
@@ -240,8 +242,9 @@ namespace DataStructures
             
             }
         }
-        private string pulseDescription;
+        
 
+        private string pulseDescription;
         public string PulseDescription
         {
             get {
@@ -251,6 +254,7 @@ namespace DataStructures
             }
             set { pulseDescription = value; }
         }
+
 
         public Dictionary<Variable, string> usedVariables()
         {

@@ -13,6 +13,7 @@ namespace WordGenerator.Controls
     {
 
         private List<VariableEditor> variableEditors;
+
         private List<ListEditorPanel> listPanels;
         private string prevSearch = "";
         public VariablesAndListPage()
@@ -578,17 +579,27 @@ namespace WordGenerator.Controls
             {
                 foreach (VariableEditor ved in variableEditors)
                 {
-
+                    string varLUTname = "";
+                    if (ved.VarLUTDriven)
+                    {
+                        varLUTname = ved.VarLUTName.ToLower();
+                    }
                     string varName = ved.VarName.ToLower();
                     string varFormula = ved.VarFormula.ToLower();
                     string inputLUTVarName = ved.LUTInputVarName.ToLower();
-                    bool varContainsToSearchInNameOrFormulaOrLUTInVarName = varName.Contains(toSearch) || varFormula.Contains(toSearch) || inputLUTVarName.Contains(toSearch);
 
-                    if (!varContainsToSearchInNameOrFormulaOrLUTInVarName && ved.Visible)
+                    bool containsInVarName = varName.Contains(toSearch);
+                    bool containsInFormula = varFormula.Contains(toSearch);
+                    bool containsInInputLUTVarName = inputLUTVarName.Contains(toSearch);
+                    bool containsInLUTName = varLUTname.Contains(toSearch);
+
+                    bool containsToSearch = containsInVarName || containsInFormula || containsInInputLUTVarName || containsInLUTName;
+
+                    if (!containsToSearch && ved.Visible)
                     {
                         ved.Hide();
                     }
-                    else if (varContainsToSearchInNameOrFormulaOrLUTInVarName && !ved.Visible)
+                    else if (containsToSearch && !ved.Visible)
                     {
                         ved.Show();
                     }
@@ -618,7 +629,17 @@ namespace WordGenerator.Controls
             searchVariableEditors("");
             //throw new NotImplementedException();
         }
-        
 
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void searchVarBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            /*
+            toolTip1.SetToolTip(searchVarBox, "Searches variable name, equation, LUT name, and LUT input variable");
+            */
+        }
     }
 }

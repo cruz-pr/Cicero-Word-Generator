@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CEEFAE9A-6E13-4ADF-9C16-F36806A136BC}"
 	ProjectSection(SolutionItems) = preProject
@@ -96,7 +96,8 @@ Global
 		{88DA2EF3-B748-43AB-8279-F22293844E29}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{88DA2EF3-B748-43AB-8279-F22293844E29}.Release|Any CPU.ActiveCfg = Release-x64|Any CPU
 		{88DA2EF3-B748-43AB-8279-F22293844E29}.Release|Any CPU.Build.0 = Release-x64|Any CPU
-		{88DA2EF3-B748-43AB-8279-F22293844E29}.Release|Mixed Platforms.ActiveCfg = Release-x64|Any CPU
+		{88DA2EF3-B748-43AB-8279-F22293844E29}.Release|Mixed Platforms.ActiveCfg = Release-x86|Any CPU
+		{88DA2EF3-B748-43AB-8279-F22293844E29}.Release|Mixed Platforms.Build.0 = Release-x86|Any CPU
 		{88DA2EF3-B748-43AB-8279-F22293844E29}.Release|Win32.ActiveCfg = Release-x64|Any CPU
 		{5F033A41-24F6-4B51-9602-03301DA111CD}.Atticus-Release-x64|Any CPU.ActiveCfg = Release|Any CPU
 		{5F033A41-24F6-4B51-9602-03301DA111CD}.Atticus-Release-x64|Any CPU.Build.0 = Release|Any CPU
@@ -150,6 +151,7 @@ Global
 		{2C5EAE42-1165-4350-A549-A13F5F50C874}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C5EAE42-1165-4350-A549-A13F5F50C874}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C5EAE42-1165-4350-A549-A13F5F50C874}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2C5EAE42-1165-4350-A549-A13F5F50C874}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2C5EAE42-1165-4350-A549-A13F5F50C874}.Release|Win32.ActiveCfg = Release|Any CPU
 		{E87C4F05-BCED-47F5-8A02-637A5A669E38}.Atticus-Release-x64|Any CPU.ActiveCfg = Release|Any CPU
 		{E87C4F05-BCED-47F5-8A02-637A5A669E38}.Atticus-Release-x64|Any CPU.Build.0 = Release|Any CPU
@@ -180,6 +182,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3832CBEE-0CB0-4607-80FE-857CBBA3DD50}
 		VisualSVNWorkingCopyRoot = 
 	EndGlobalSection
 	GlobalSection(SubversionScc) = preSolution

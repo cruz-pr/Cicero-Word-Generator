@@ -28,6 +28,7 @@ namespace WordGenerator.Controls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.variablesPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,6 +65,7 @@ namespace WordGenerator.Controls
             this.searchVarBox = new System.Windows.Forms.TextBox();
             this.clearVarSearchButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.listEditorPanelPlaceholder = new WordGenerator.Controls.ListEditorPanel();
             this.runControl1 = new WordGenerator.Controls.RunControl();
             this.variablesPanel.SuspendLayout();
@@ -144,7 +146,7 @@ namespace WordGenerator.Controls
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(24, 74);
+            this.addButton.Location = new System.Drawing.Point(24, 77);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(55, 34);
             this.addButton.TabIndex = 1;
@@ -304,7 +306,7 @@ namespace WordGenerator.Controls
             // 
             // equationHelpButton
             // 
-            this.equationHelpButton.Location = new System.Drawing.Point(158, 74);
+            this.equationHelpButton.Location = new System.Drawing.Point(163, 77);
             this.equationHelpButton.Name = "equationHelpButton";
             this.equationHelpButton.Size = new System.Drawing.Size(57, 34);
             this.equationHelpButton.TabIndex = 8;
@@ -314,7 +316,7 @@ namespace WordGenerator.Controls
             // 
             // permanentVariablesButton
             // 
-            this.permanentVariablesButton.Location = new System.Drawing.Point(82, 74);
+            this.permanentVariablesButton.Location = new System.Drawing.Point(84, 77);
             this.permanentVariablesButton.Name = "permanentVariablesButton";
             this.permanentVariablesButton.Size = new System.Drawing.Size(73, 34);
             this.permanentVariablesButton.TabIndex = 9;
@@ -451,15 +453,16 @@ namespace WordGenerator.Controls
             // 
             this.searchVarBox.AcceptsReturn = true;
             this.searchVarBox.AcceptsTab = true;
-            this.searchVarBox.Location = new System.Drawing.Point(24, 37);
+            this.searchVarBox.Location = new System.Drawing.Point(107, 29);
             this.searchVarBox.Name = "searchVarBox";
             this.searchVarBox.Size = new System.Drawing.Size(128, 20);
             this.searchVarBox.TabIndex = 12;
             this.searchVarBox.TextChanged += new System.EventHandler(this.searchVarBox_TextChanged_1);
+            this.searchVarBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.searchVarBox_MouseMove);
             // 
             // clearVarSearchButton
             // 
-            this.clearVarSearchButton.Location = new System.Drawing.Point(158, 37);
+            this.clearVarSearchButton.Location = new System.Drawing.Point(241, 28);
             this.clearVarSearchButton.Name = "clearVarSearchButton";
             this.clearVarSearchButton.Size = new System.Drawing.Size(41, 20);
             this.clearVarSearchButton.TabIndex = 13;
@@ -471,11 +474,18 @@ namespace WordGenerator.Controls
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 21);
+            this.label7.Location = new System.Drawing.Point(21, 32);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Search variables";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 500;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // listEditorPanelPlaceholder
             // 
@@ -571,5 +581,6 @@ namespace WordGenerator.Controls
         private System.Windows.Forms.TextBox searchVarBox;
         private System.Windows.Forms.Button clearVarSearchButton;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

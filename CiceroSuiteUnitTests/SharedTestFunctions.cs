@@ -11,9 +11,10 @@ namespace CiceroSuiteUnitTests
 {
     public class SharedTestFunctions
     {
-        public static object loadTestFile(string path, Type desiredType, 
-            bool failOnException = true, SerializationBinder customBinder = null)
+        public static object loadTestFile(string path, Type desiredType, bool failOnException = true, SerializationBinder customBinder = null)
         {
+            string pth = "C:\\Users\\Enid\\Documents\\Cicero-Word-Generator-fork\\TestFiles\\";
+            path = pth + path;
             Assert.IsTrue(System.IO.File.Exists(path), "Test file " + path + " does not exist.");
             BinaryFormatter b = new BinaryFormatter();
             object loaded = null;
